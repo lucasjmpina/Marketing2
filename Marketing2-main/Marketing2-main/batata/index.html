@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev & Prosa</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F9F7F0;
+            color: #1A1C1D;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(90deg, #2F8F87, #1A1C1D);
+            color: #F9F7F0;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            margin-top: 20px;
+        }
+        nav a {
+            color: #F9F7F0;
+            margin: 0 25px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        nav a:hover {
+            color: #D4A017;
+            text-shadow: 0 0 5px rgba(212, 160, 23, 0.5);
+        }
+        .tabbed-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+        .tab-content {
+            display: none;
+            padding: 30px;
+            background: #F9F7F0;
+            border-radius: 10px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-content h1 {
+            font-size: 2.8em;
+            color: #1A1C1D;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .tab-content p {
+            font-size: 1.2em;
+            max-width: 900px;
+            margin: 0 auto 25px;
+            text-align: justify;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        ul li {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            background: #fff;
+            transition: transform 0.2s;
+        }
+        ul li:hover {
+            transform: translateY(-5px);
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #F9F7F0;
+            font-size: 1.8em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), transparent);
+            z-index: 0;
+        }
+        .logo span {
+            position: relative;
+            z-index: 1;
+        }
+        .logo.alpha { background: linear-gradient(45deg, #2F8F87, #1A1C1D); }
+        .logo.alpha::before { background: linear-gradient(45deg, rgba(47, 143, 135, 0.3), transparent); }
+        .logo.alpha span::after { content: "📦"; font-size: 1.2em; }
+
+        .logo.beta { background: linear-gradient(45deg, #1A1C1D, #4A4E4D); }
+        .logo.beta::before { background: linear-gradient(45deg, rgba(26, 28, 29, 0.3), transparent); }
+        .logo.beta span::after { content: "💰"; font-size: 1.2em; }
+
+        .logo.gamma { background: linear-gradient(45deg, #D4A017, #F4C430); }
+        .logo.gamma::before { background: linear-gradient(45deg, rgba(212, 160, 23, 0.3), transparent); }
+        .logo.gamma span::after { content: "📊"; font-size: 1.2em; }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            margin: 15px 0;
+            padding: 12px;
+            border: 2px solid #2F8F87;
+            border-radius: 6px;
+            font-size: 1.1em;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #D4A017;
+            outline: none;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        button {
+            background-color: #2F8F87;
+            color: #F9F7F0;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #1A1C1D;
+            transform: scale(1.05);
+        }
+        .image-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dev & Prosa</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Fale Conosco</a>
+        </nav>
+    </header>
+
+    <div class="tabbed-content">
+        <div id="home" class="tab-content active">
+            <h1>Bem-Vindo à Dev & Prosa</h1>
+            <p>Somos uma empresa líder em tecnologia, dedicada a transformar a forma como as empresas gerenciam suas operações através de soluções inovadoras e personalizadas. Fundada com a missão de empoderar negócios de todos os tamanhos, oferecemos serviços que combinam expertise técnica com criatividade, garantindo resultados mensuráveis e estratégias baseadas em dados. Nossa equipe é composta por profissionais apaixonados por tecnologia e comprometidos com o sucesso dos nossos clientes.</p>
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="A modern office with a diverse team collaborating on a digital project, featuring a sleek desk setup with computers and plants.">
+            </div>
+        </div>
+
+        <div id="servicos" class="tab-content">
+            <h1>Nossos Serviços</h1>
+            <p>Na Dev & Prosa, oferecemos uma gama completa de serviços tecnológicos projetados para atender às necessidades específicas de cada cliente. Nosso portfólio inclui:</p>
+            <ul>
+                <li><strong>Desenvolvimento de Sites Personalizados:</strong> Criação de plataformas web únicas, otimizadas para desempenho e experiência do usuário.</li>
+                <li><strong>Consultoria em TI:</strong> Assessoria estratégica para implementação de tecnologias que impulsionam o crescimento empresarial.</li>
+                <li><strong>Manutenção e Suporte Técnico:</strong> Suporte contínuo para garantir a estabilidade e segurança dos sistemas dos nossos clientes.</li>
+            </ul>
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="A vibrant illustration of digital services, including a laptop displaying code and a website design interface.">
+            </div>
+        </div>
+
+        <div id="sobre" class="tab-content">
+            <h1>Sobre a Dev & Prosa</h1>
+            <p>O projeto Dev & Prosa tem como objetivo principal o desenvolvimento de um site de Gerenciamento Empresarial que funcione como uma plataforma online integrada, projetada para auxiliar empresas no controle e na organização de suas atividades internas. Nossa visão é criar um sistema acessível, intuitivo e escalável, que reúna em um único ambiente funcionalidades essenciais, incluindo:</p>
+            <ul>
+                <li>Cadastro e gestão de clientes, fornecedores e produtos com filtros avançados.</li>
+                <li>Controle de estoque em tempo real com alertas automáticos.</li>
+                <li>Gestão financeira detalhada, incluindo contas a pagar/receber e fluxo de caixa projetado.</li>
+                <li>Relatórios gerenciais personalizáveis e indicadores de desempenho em dashboards interativos.</li>
+                <li>Agenda de compromissos e tarefas com notificações integradas.</li>
+                <li>Controle de usuários e permissões com níveis de acesso hierárquicos.</li>
+            </ul>
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="A conceptual design of an integrated business management platform, showing dashboards and user interfaces.">
+            </div>
+        </div>
+
+        <div id="contato" class="tab-content">
+            <h1>Fale Conosco</h1>
+            <p>Estamos à disposição para ajudá-lo a transformar seu negócio com nossas soluções. Entre em contato pelo e-mail: <a href="mailto:devprosadevprosa@gmail.com">devprosadevprosa@gmail.com</a>. Nossa equipe responderá em até 24 horas para discutir suas necessidades e oferecer uma proposta personalizada.</p>
+            <div class="contact-form">
+                <input type="text" placeholder="Seu nome" required>
+                <input type="email" placeholder="Seu e-mail" required>
+                <textarea placeholder="Como podemos ajudar? Descreva suas necessidades ou perguntas." rows="5" required></textarea>
+                <button type="submit">Enviar Mensagem</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('.tab-content');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+                    document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            sections[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>
